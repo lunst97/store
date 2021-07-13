@@ -11,7 +11,6 @@ class ProductCollection
     @sum = sum
   end
 
-  # считывает все файлы и по по конструктору выстраивает все в хэш
   def self.from_dir(dir_path)
     products = []
 
@@ -24,11 +23,9 @@ class ProductCollection
       end
     end
 
-    # констуктор
     self.new(products)
   end
 
-  # вывод полного списка продуктов
   def to_s
     product =
       @products.map.with_index(1) { |product, index| "#{index}. #{product}" }
@@ -39,12 +36,10 @@ class ProductCollection
     @products
   end
 
-  # Выбирает продукт по индексу всех продкутов
   def product_by_index(user_inputs)
     to_a[user_inputs - 1]
   end
 
-  # Сортирует весь список продуктов по ключу :by
   def sort!(params)
     case params[:by]
     when :title
@@ -55,7 +50,6 @@ class ProductCollection
       @products.sort_by! { |product| product.amount }
     end
 
-    # Меняет сортировку в обратное направление (по цене например)
     @products.reverse! if params[:order] == :asc
 
     self
