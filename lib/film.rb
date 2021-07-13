@@ -1,14 +1,19 @@
-class Film < Market
+class Film < Product
+  # создает аксессор на ввод и вывод
   attr_accessor :title, :director, :year
+
   def initialize(params)
     super
+
     @title = params[:title]
     @director = params[:director]
     @year = params[:year]
   end
 
+  # Создает констуктор хэша
   def self.from_file(file_path)
-    lines = File.readlines(file_path).map {|l| l.chomp}
+    lines = File.readlines(file_path).map { |l| l.chomp }
+
     self.new(
       title: lines[0],
       director: lines[1],
@@ -18,12 +23,15 @@ class Film < Market
     )
   end
 
+  # выводит весь фильм
   def to_s
     "Фильм «#{@title}», #{@year}, реж. #{@director}, #{super}"
   end
 
+  # дает возможность внести изменения в фильме
   def update(params)
     super
+
     @title = params[:title] if params[:title]
     @director = params[:director] if params[:director]
     @year = params[:year] if params[:year]
