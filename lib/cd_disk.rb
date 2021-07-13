@@ -1,5 +1,4 @@
 class CdDisk < Product
-  # создает аксессор на ввод и вывод
   attr_accessor :title, :executor, :genre, :year
 
   def initialize(params)
@@ -11,7 +10,6 @@ class CdDisk < Product
     @year = params[:year]
   end
 
-  # Создает констуктор хэша
   def self.from_file(file_path)
     lines = File.readlines(file_path).map { |l| l.chomp }
 
@@ -25,12 +23,10 @@ class CdDisk < Product
     )
   end
 
-  # выводит весь альбом
   def to_s
     "Альбом «#{@title}», #{@executor}, #{@genre}, #{@year}, #{@price} руб. (осталось #{@amount})"
   end
 
-  # дает возможность внести изменения в альбоме
   def update(params)
     super
 
