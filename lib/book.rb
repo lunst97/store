@@ -1,5 +1,4 @@
 class Book < Product
-  # создает аксессор на ввод и вывод
   attr_accessor :title, :genre, :author
 
   def initialize(params)
@@ -10,7 +9,6 @@ class Book < Product
     @author = params[:author]
   end
 
-  # Создает констуктор хэша
   def self.from_file(file_path)
     lines = File.readlines(file_path,).map { |l| l.chomp }
 
@@ -23,12 +21,10 @@ class Book < Product
     )
   end
 
-  # выводит весю книгу
   def to_s
     "Книга «#{@title}», #{@genre}, автор - #{@author}, #{super}"
   end
 
-  # дает возможность внести изменения в книге
   def update(params)
     super
 
