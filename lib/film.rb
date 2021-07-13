@@ -1,5 +1,4 @@
 class Film < Product
-  # создает аксессор на ввод и вывод
   attr_accessor :title, :director, :year
 
   def initialize(params)
@@ -10,7 +9,6 @@ class Film < Product
     @year = params[:year]
   end
 
-  # Создает констуктор хэша
   def self.from_file(file_path)
     lines = File.readlines(file_path).map { |l| l.chomp }
 
@@ -23,12 +21,10 @@ class Film < Product
     )
   end
 
-  # выводит весь фильм
   def to_s
     "Фильм «#{@title}», #{@year}, реж. #{@director}, #{super}"
   end
 
-  # дает возможность внести изменения в фильме
   def update(params)
     super
 
