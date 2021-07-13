@@ -3,7 +3,6 @@ class Cart
     @products = products
   end
 
-  # складывает все в корзину
   def add_product(chosen_product)
     @products << chosen_product
   end
@@ -12,7 +11,6 @@ class Cart
     @products.sum { |product| product.price }
   end
 
-  # выводит всю корзину
   def to_s
     @products.join("\n")
   end
